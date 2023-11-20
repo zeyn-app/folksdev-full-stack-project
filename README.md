@@ -1,2 +1,2 @@
 # folksdev-full-stack-project
-A Spring Boot project by Folksdev
+A fullstack project using Spring Boot
