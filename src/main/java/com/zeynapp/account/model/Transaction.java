@@ -1,7 +1,6 @@
 package com.zeynapp.account.model;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -16,8 +15,7 @@ public class Transaction {
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
-    @Builder.Default
-    private TransactionType transactionType = TransactionType.INITIAL;
+    private TransactionType transactionType;
     private BigDecimal amount;
     private LocalDateTime transactionDate;
 
