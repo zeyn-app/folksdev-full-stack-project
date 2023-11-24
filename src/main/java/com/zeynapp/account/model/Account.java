@@ -1,15 +1,22 @@
 package com.zeynapp.account.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Account {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -23,5 +30,6 @@ public class Account {
     private Customer customer;
 
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
-    private Set<Transaction> transactions;
+    @Builder.Default
+    private Set<Transaction> transactions = new HashSet<>();
 }
