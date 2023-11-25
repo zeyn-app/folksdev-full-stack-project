@@ -10,13 +10,14 @@ import org.hibernate.annotations.GenericGenerator;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class Account {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -29,7 +30,19 @@ public class Account {
     @JoinColumn(name = "customerId", nullable = false)
     private Customer customer;
 
-    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Builder.Default
-    private Set<Transaction> transactions = new HashSet<>();
+    private Set<Transaction> transactions= new HashSet<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Account account)) return false;
+        return Objects.equals(id, account.id) && Objects.equals(balance, account.balance) && Objects.equals(creationDate, account.creationDate) && Objects.equals(customer, account.customer);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, balance, creationDate, customer);
+    }
 }

@@ -1,12 +1,19 @@
 package com.zeynapp.account.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class Customer {
     @Id
@@ -17,5 +24,7 @@ public class Customer {
     private String surname;
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
-    private Set<Account> accounts;
+    @Builder.Default
+    private Set<Account> accounts = new HashSet<>();
+
 }
