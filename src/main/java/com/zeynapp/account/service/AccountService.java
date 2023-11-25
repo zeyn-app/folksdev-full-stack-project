@@ -37,12 +37,15 @@ public class AccountService {
                 .build();
 
         if (accountRequest.getInitialCredit().compareTo(BigDecimal.ZERO) > 0) {
-            Transaction transaction = transactionService.initiateMoney(
-                    account, accountRequest.getInitialCredit());
+            Transaction transaction = Transaction.builder()
+                    .amount(accountRequest.getInitialCredit())
+                    .account(account).build();
+
+//            Transaction transaction = transactionService.initiateMoney(
+//                    account, accountRequest.getInitialCredit());
+
             account.getTransactions().add(transaction);
         }
-
-        return converter.convertToAccount(account);
+        return converter.convertToAccount(accountRepository.save(account));
     }
-
 }
