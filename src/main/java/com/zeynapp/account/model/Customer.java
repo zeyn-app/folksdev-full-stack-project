@@ -23,7 +23,7 @@ public class Customer {
     private String name;
     private String surname;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Builder.Default
     private Set<Account> accounts = new HashSet<>();
 
