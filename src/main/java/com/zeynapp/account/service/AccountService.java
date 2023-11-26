@@ -36,13 +36,10 @@ public class AccountService {
                 .balance(accountRequest.getInitialCredit())
                 .build();
 
-        if (accountRequest.getInitialCredit().compareTo(BigDecimal.ZERO) > 0) {
-            Transaction transaction = Transaction.builder()
-                    .amount(accountRequest.getInitialCredit())
-                    .account(account).build();
 
-//            Transaction transaction = transactionService.initiateMoney(
-//                    account, accountRequest.getInitialCredit());
+        if (accountRequest.getInitialCredit().compareTo(BigDecimal.ZERO) > 0) {
+            Transaction transaction = transactionService.initiateMoney(
+                    account, accountRequest.getInitialCredit());
 
             account.getTransactions().add(transaction);
         }
