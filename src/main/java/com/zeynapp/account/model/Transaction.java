@@ -12,8 +12,7 @@ import java.util.Objects;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-//@EqualsAndHashCode
-@Data
+@Getter
 public class Transaction {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -34,7 +33,10 @@ public class Transaction {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Transaction that)) return false;
-        return Objects.equals(id, that.id) && transactionType == that.transactionType && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate);
+        return Objects.equals(id, that.id)
+                && transactionType == that.transactionType
+                && Objects.equals(amount, that.amount)
+                && Objects.equals(transactionDate, that.transactionDate);
     }
 
     @Override

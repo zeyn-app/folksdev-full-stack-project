@@ -3,19 +3,21 @@ package com.zeynapp.account.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
 public class Account {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -31,7 +33,6 @@ public class Account {
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Builder.Default
     private Set<Transaction> transactions= new HashSet<>();
-//    private List<Transaction> transactions = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
