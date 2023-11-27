@@ -26,5 +26,7 @@ public class Customer {
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Builder.Default
     private Set<Account> accounts = new HashSet<>();
+//    private List<Account> accounts = new ArrayList<>();
+
 
 }

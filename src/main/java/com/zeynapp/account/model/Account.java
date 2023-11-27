@@ -9,9 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Builder
@@ -27,18 +25,22 @@ public class Account {
     private LocalDateTime creationDate;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "customerId", nullable = false)
+    @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Builder.Default
     private Set<Transaction> transactions= new HashSet<>();
+//    private List<Transaction> transactions = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Account account)) return false;
-        return Objects.equals(id, account.id) && Objects.equals(balance, account.balance) && Objects.equals(creationDate, account.creationDate) && Objects.equals(customer, account.customer);
+        return Objects.equals(id, account.id)
+                && Objects.equals(balance, account.balance)
+                && Objects.equals(creationDate, account.creationDate)
+                && Objects.equals(customer, account.customer);
     }
 
     @Override

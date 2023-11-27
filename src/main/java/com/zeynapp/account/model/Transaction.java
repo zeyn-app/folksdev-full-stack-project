@@ -27,7 +27,7 @@ public class Transaction {
     private LocalDateTime transactionDate = LocalDateTime.now();
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "account", nullable = false)
+    @JoinColumn(name = "account_id", nullable = false)
     private Account account;
 
     @Override
