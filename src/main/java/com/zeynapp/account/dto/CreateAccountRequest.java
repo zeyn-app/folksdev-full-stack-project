@@ -1,6 +1,6 @@
 package com.zeynapp.account.dto;
 
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
@@ -10,6 +10,6 @@ import java.math.BigDecimal;
 public class CreateAccountRequest {
     @NotEmpty
     private String customerId;
-    @NotBlank
+    @Min(0)
     private BigDecimal initialCredit;
 }

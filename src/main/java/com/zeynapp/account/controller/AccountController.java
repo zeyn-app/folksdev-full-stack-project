@@ -3,6 +3,7 @@ package com.zeynapp.account.controller;
 import com.zeynapp.account.dto.AccountDto;
 import com.zeynapp.account.dto.CreateAccountRequest;
 import com.zeynapp.account.service.AccountService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,7 @@ public class AccountController {
         this.accountService = accountService;
     }
     @PostMapping
-    public ResponseEntity<AccountDto> createAccount(@RequestBody CreateAccountRequest accountRequest){
+    public ResponseEntity<AccountDto> createAccount(@Valid @RequestBody CreateAccountRequest accountRequest){
         return ResponseEntity.ok(accountService.createAccount(accountRequest));
     }
 }
