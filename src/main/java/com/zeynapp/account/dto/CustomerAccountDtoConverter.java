@@ -17,7 +17,7 @@ public class CustomerAccountDtoConverter {
         return CustomerAccountDto.builder()
                 .id(from.getId())
                 .balance(from.getBalance())
-                .transactionDtoSet(
+                .transactions(
                         from.getTransactions().stream().map(converter::convert).collect(Collectors.toSet())
                 )
                 .creationDate(from.getCreationDate())

@@ -25,7 +25,7 @@ public class CustomerDtoConverter {
                 .id(from.getId())
                 .name(from.getName())
                 .surname(from.getSurname())
-                .accountDtoSet(from.getAccounts().stream().map(converter::convert).collect(Collectors.toSet()))
+                .accounts(from.getAccounts().stream().map(converter::convert).collect(Collectors.toSet()))
                 .build();
     }
 }

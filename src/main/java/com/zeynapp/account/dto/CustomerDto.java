@@ -12,5 +12,5 @@ public class CustomerDto {
     private String id;
     private String name;
     private String surname;
-    private Set<CustomerAccountDto> accountDtoSet;
+    private Set<CustomerAccountDto> accounts;
 }

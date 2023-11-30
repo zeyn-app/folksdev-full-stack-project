@@ -11,7 +11,7 @@ import java.util.Set;
 public class CustomerAccountDto {
     private String id;
     private BigDecimal balance;
-    private Set<TransactionDto> transactionDtoSet;
+    private Set<TransactionDto> transactions;
     private LocalDateTime creationDate;
 
 
