@@ -16,5 +16,5 @@ public class AccountDto {
     private BigDecimal balance;
     private LocalDateTime creationDate;
     private AccountCustomerDto accountCustomerDto;
-    private Set<TransactionDto> transactionDtoSet;
+    private Set<TransactionDto> transactions;
 }
