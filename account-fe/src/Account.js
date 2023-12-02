@@ -4,7 +4,6 @@ import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 
-// /v1/accounts
 class Account extends Component{
 
     constructor(props) {
@@ -53,6 +52,13 @@ class Account extends Component{
             },
             body: JSON.stringify(createAccountRequest),
         });
+        this.setState({
+            createAccountRequest: {
+                customerId: this.props.match.params.id,
+                initialCredit: ""
+            }
+        });
+
         this.props.history.push('/');
     }
 
@@ -77,7 +83,6 @@ class Account extends Component{
                             </FormGroup>
                             <FormGroup>
                                 <Button color="primary" type="submit" to="/">Save</Button>{' '}
-                                {/*<Button color="primary" type="submit" onClick={() => this.props.history.push('/')}>Save</Button>{' '}*/}
                                 <Button color="secondary" tag={Link} to="/" >Cancel</Button>
                             </FormGroup>
                         </Form>
