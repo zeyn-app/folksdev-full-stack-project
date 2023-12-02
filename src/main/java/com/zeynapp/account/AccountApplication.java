@@ -22,9 +22,18 @@ public class AccountApplication implements CommandLineRunner {
 	public void run(String...args){
 		Customer customer = customerRepository.save(Customer
 				.builder()
-				.name("Zeynep")
-				.surname("Özdemir")
+				.name("Eleman1")
+				.surname("Eleman1")
 				.build());
+
+		Customer customer2 = customerRepository.save(Customer
+				.builder()
+				.name("Eleman2")
+				.surname("Eleman2")
+				.build());
+
 		System.out.println(customer);
+		System.out.println(customer2);
+
 	}
 }
