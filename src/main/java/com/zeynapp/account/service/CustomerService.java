@@ -7,6 +7,8 @@ import com.zeynapp.account.model.Customer;
 import com.zeynapp.account.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CustomerService {
     private final CustomerRepository customerRepository;
@@ -25,5 +27,9 @@ public class CustomerService {
 
     public CustomerDto getCustomerById(String id) {
         return converter.convertToCustomerDto(findCustomer(id));
+    }
+
+    public List<CustomerDto> getAllCustomer() {
+        return customerRepository.findAll().stream().map(converter::convertToCustomerDto).toList();
     }
 }

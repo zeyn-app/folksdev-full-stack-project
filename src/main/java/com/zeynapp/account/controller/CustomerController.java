@@ -5,6 +5,8 @@ import com.zeynapp.account.service.CustomerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v1/customers")
 public class CustomerController {
@@ -12,6 +14,11 @@ public class CustomerController {
 
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CustomerDto>> getAllCustomer(){
+        return ResponseEntity.ok(customerService.getAllCustomer());
     }
 
     @GetMapping("/{customerId}")
