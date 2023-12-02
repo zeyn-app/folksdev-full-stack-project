@@ -7,13 +7,6 @@ import {Button} from 'reactstrap';
 
 class Customer extends Component {
     state = {
-        // [] collection, {} an object
-        // customer: {
-        //     accounts:[{
-        //         transactions:[]
-        //     }]
-        // }
-
         customers: [{
             accounts: [{
                 transactions: []
