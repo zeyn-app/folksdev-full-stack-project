@@ -22,14 +22,14 @@ public class AccountApplication implements CommandLineRunner {
 	public void run(String...args){
 		Customer customer = customerRepository.save(Customer
 				.builder()
-				.name("Eleman1")
-				.surname("Eleman1")
+				.name("John")
+				.surname("Smith")
 				.build());
 
 		Customer customer2 = customerRepository.save(Customer
 				.builder()
-				.name("Eleman2")
-				.surname("Eleman2")
+				.name("Alexa")
+				.surname("King")
 				.build());
 
 		System.out.println(customer);
