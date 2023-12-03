@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import Table from 'react-bootstrap/Table';
 import './App.css';
 import React, {Component} from "react";
 import {BrowserRouter as Router, Link, Switch} from 'react-router-dom';
@@ -26,36 +26,57 @@ class Customer extends Component {
         window.location.reload();
     };
 
-
     render() {
-        const {customers} = this.state;
+        const { customers } = this.state;
+
         return (
             <div className="App">
                 <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
                     <div className="App-intro">
-                        <h2>Customer</h2>
-                        {customers.map(customer =>
+                        {customers.map((customer) => (
                             <div key={customer.id}>
-                                {customer.name} {customer.surname},
-                                {customer.accounts.map(account =>
-                                    <p key={account.id}>
-                                        {account.balance}, ({account.creationDate}),
-                                        {account.transactions.map(transaction => (
-                                            <div key={transaction.id}>
-                                                transactionInfo: {transaction.amount}, {transaction.transactionDate}, {transaction.transactionType}
-                                            </div>
-                                        ))}
-                                    </p>)}
+                                <h2>{`${customer.name} ${customer.surname}`}</h2>
+                                <Table striped bordered hover>
+                                    <thead>
+                                    <tr>
+                                        <th>AccountId</th>
+                                        <th>Balance</th>
+                                        <th>TransactionDate</th>
+                                        <th>TransactionType</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {customer.accounts.map((account) => (
+                                        <tr key={account.id}>
+                                            <td>{account.id}</td>
+                                            <td>{account.balance}</td>
+                                            <td>
+                                                {account.transactions.map((transaction) => (
+                                                    <div key={transaction.id}>
+                                                        {transaction.transactionDate}
+                                                    </div>
+                                                ))}
+                                            </td>
+                                            <td>
+                                                {account.transactions.map((transaction) => (
+                                                    <div key={transaction.id}>
+                                                        {transaction.transactionType}
+                                                    </div>
+                                                ))}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                    </tbody>
+                                </Table>
                                 <Router>
                                     <Switch>
-                                        <Button color="link"  onClick={this.handleRefreshClick}>
-                                            <Link to={`/account/${customer.id}`}>Account</Link>
+                                        <Button color="link" onClick={this.handleRefreshClick}>
+                                            <Link to={`/account/${customer.id}`}>Create Account</Link>
                                         </Button>
                                     </Switch>
                                 </Router>
                             </div>
-                        )}
+                        ))}
                     </div>
                 </header>
             </div>
@@ -64,4 +85,3 @@ class Customer extends Component {
 }
 
 export default Customer;
-
