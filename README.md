@@ -4,7 +4,7 @@
 
 * Her kullanıcıya ait işlem ve hesap bilgileri ayrı tablolarda tutulur.
 
-![img_1](https://github.com/zeyn-app/folksdev-full-stack-project/assets/64809828/5bb9e229-a75a-4275-94c1-93649fe724a1)
+![image](https://github.com/zeyn-app/folksdev-full-stack-project/assets/64809828/11024bde-98ed-46fe-b48d-4134e31f9230)
 
 
 
