@@ -28,8 +28,6 @@ class Account extends Component{
         this.setState({createAccountRequest: item});
     }
 
-
-
     async componentDidMount(){
         this.setState({
             createAccountRequest:{
@@ -82,7 +80,7 @@ class Account extends Component{
                                        onChange={this.handleChange} autoComplete="initialCredit"/>
                             </FormGroup>
                             <FormGroup>
-                                <Button color="primary" type="submit" to="/">Save</Button>{' '}
+                                <Button color="primary" type="submit" to={`/`} >Save</Button>{' '}
                                 <Button color="secondary" tag={Link} to="/" >Cancel</Button>
                             </FormGroup>
                         </Form>
